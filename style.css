@@ -22,7 +22,7 @@ body {
   justify-content: center;
 }
 
-.quote-container {
+.quote-container, .favorites-container {
   width: auto;
   max-width: 50%;
   padding: 1.25rem 2rem;

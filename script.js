@@ -1,9 +1,11 @@
 let quotes = [];
 const favoriteQuotes = [];
+let favoritesVisible = false;
 
 const quoteContainer = document.getElementById("quote-container");
 const quoteBodyElement = document.getElementById("quote");
 const quoteAuthorElement = document.getElementById("author");
+const favoritesContainer = document.getElementById("favorites-container");
 
 const homeButton = document.getElementById("home-btn");
 const favoritesButton = document.getElementById("favorites-btn");
@@ -21,6 +23,16 @@ function showLoadSpinner(){
 function showQuoteContainer(){
    loaderElement.classList.add("not-visible")
    quoteContainer.classList.remove("not-visible")
+}
+
+function showFavorites(){
+   quoteContainer.classList.add("not-visible");
+   favoritesContainer.classList.remove("not-visible");
+}
+
+function showQuotes(){
+   quoteContainer.classList.remove("not-visible");
+   favoritesContainer.classList.add("not-visible");
 }
 
 function addFavorite(){
@@ -67,11 +79,8 @@ function tweetCurrentQuote(){
 
 newQuoteButton.addEventListener("click", getQuote);
 twitterButton.addEventListener("click", tweetCurrentQuote);
-homeButton.addEventListener("click", function(){
-   window.location.href = "index.html";
-})
-favoritesButton.addEventListener("click", function(){
-   window.location.href = "favorites.html";
-})
+favoritesButton.addEventListener("click", showFavorites);
 addFavoriteButton.addEventListener("click", addFavorite);
+homeButton.addEventListener("click", showQuotes);
+
 getQuote();
