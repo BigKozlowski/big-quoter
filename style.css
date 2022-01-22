@@ -113,8 +113,8 @@ button:active {
   }
 }
 
-@media screen and (max-width: 1000px) {
-  .quoter-container {
+@media screen and (max-width: 1050px) {
+  .quote-container {
     margin: auto 1rem;
   }
 
