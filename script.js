@@ -1,11 +1,11 @@
 let quotes = [];
 const favoriteQuotes = [];
-let favoritesVisible = false;
 
 const quoteContainer = document.getElementById("quote-container");
 const quoteBodyElement = document.getElementById("quote");
 const quoteAuthorElement = document.getElementById("author");
 const favoritesContainer = document.getElementById("favorites-container");
+const favoritesList = document.getElementById("favorites-list");
 
 const homeButton = document.getElementById("home-btn");
 const favoritesButton = document.getElementById("favorites-btn");
@@ -75,6 +75,29 @@ async function getQuote(){
 function tweetCurrentQuote(){
    const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteBodyElement.textContent} - ${quoteAuthorElement.textContent}`;
    window.open(twitterUrl, "_blank");
+}
+
+function addFavorite(){
+   favoriteQuotes.push({text: quoteBodyElement.textContent,
+   author: quoteAuthorElement.textContent});
+   renderFavorites();
+   console.log(favoriteQuotes);
+}
+
+function renderFavorites(){
+   for(const element of favoritesList.children){
+      favoritesList.removeChild(element);
+   }
+   for(const content of favoriteQuotes){
+      let element = document.createElement("li");
+      let text = document.createElement("p");
+      text.textContent = content.text;
+      element.appendChild(text);
+      let author = document.createElement("p");
+      author.textContent = content.author;
+      element.appendChild(author);
+      favoritesList.appendChild(element);
+   }
 }
 
 newQuoteButton.addEventListener("click", getQuote);
