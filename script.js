@@ -1,10 +1,16 @@
 let quotes = [];
+const favoriteQuotes = [];
 
 const quoteContainer = document.getElementById("quote-container");
 const quoteBodyElement = document.getElementById("quote");
 const quoteAuthorElement = document.getElementById("author");
+
+const homeButton = document.getElementById("home-btn");
+const favoritesButton = document.getElementById("favorites-btn");
+const addFavoriteButton = document.getElementById("new-favorite-btn");
 const newQuoteButton = document.getElementById("new-quote");
 const twitterButton = document.getElementById("twitter");
+
 const loaderElement = document.getElementById("loader");
 
 function showLoadSpinner(){
@@ -15,6 +21,13 @@ function showLoadSpinner(){
 function showQuoteContainer(){
    loaderElement.classList.add("not-visible")
    quoteContainer.classList.remove("not-visible")
+}
+
+function addFavorite(){
+   const favoriteQuote = {text: quoteBodyElement.textContent,
+   author: quoteAuthorElement.textContent}
+   favoriteQuotes.push(favoriteQuote);
+   console.log(favoriteQuotes[favoriteQuotes.length-1]);
 }
 
 function getSingleQuoteOfQuotes() {
@@ -39,8 +52,8 @@ async function getQuote(){
    const apiUrl = "https://type.fit/api/quotes";
    try {
       const response = await fetch(apiUrl);
-   quotes = await response.json();
-   getSingleQuoteOfQuotes();
+      quotes = await response.json();
+      getSingleQuoteOfQuotes();
    }  catch(error) {
 
    }
@@ -54,4 +67,11 @@ function tweetCurrentQuote(){
 
 newQuoteButton.addEventListener("click", getQuote);
 twitterButton.addEventListener("click", tweetCurrentQuote);
+homeButton.addEventListener("click", function(){
+   window.location.href = "index.html";
+})
+favoritesButton.addEventListener("click", function(){
+   window.location.href = "favorites.html";
+})
+addFavoriteButton.addEventListener("click", addFavorite);
 getQuote();

@@ -21,6 +21,10 @@
     <script src="script.js" defer></script>
   </head>
   <body>
+    <nav class="nav-container" id="nav-container">
+      <button id="home-btn">Quoter</button>
+      <button id="favorites-btn">Favorites</button>
+    </nav>
     <div class="quote-container" id="quote-container">
       <div class="quote-text">
         <i class="fas fa-quote-left"></i>
@@ -32,6 +36,9 @@
       <div class="button-container">
         <button class="twitter-button" id="twitter" title="Tweet this!">
           <i class="fab fa-twitter"></i>
+        </button>
+        <button id="new-favorite-btn">
+          <i class="fa fa-heart" aria-hidden="true" id="favorite-btn"></i>
         </button>
         <button id="new-quote">New quote</button>
       </div>

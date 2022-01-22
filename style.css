@@ -24,28 +24,39 @@ body {
 
 .quote-container {
   width: auto;
-  max-width: 60rem;
+  max-width: 50%;
   padding: 1.25rem 2rem;
   border-radius: 12px;
   background-color: rgba(242, 242, 242, 0.4);
   box-shadow: 0 8px 8px 8px rgba(43,46,74,0.2);
 }
 
-.quote-text {
-  font-size: 2.75rem;
+.nav-container {
+  height: 6rem;
+  padding: 1.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
-.long-quote {
+.quote-text {
   font-size: 2rem;
 }
 
+.long-quote {
+  font-size: 1.5rem;
+}
+
 .fa-quote-left {
-  font-size:  4rem;
+  font-size:  2.75rem;
 }
 
 .quote-author {
   margin-top: 1rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 400;
   font-style: italic;
 }
@@ -116,6 +127,7 @@ button:active {
 @media screen and (max-width: 1050px) {
   .quote-container {
     margin: auto 1rem;
+    margin-top: max(20% auto);
   }
 
   .quote-text {
