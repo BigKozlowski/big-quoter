@@ -22,7 +22,7 @@ body {
   justify-content: center;
 }
 
-.quoter-container {
+.quote-container {
   width: auto;
   max-width: 60rem;
   padding: 1.25rem 2rem;
@@ -80,6 +80,37 @@ button:active {
 
 .twitter-button:hover {
   color: #38a1f3;
+}
+
+.loader {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.loader:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid var(--main-content-color);
+  border-color: var(--main-content-color) transparent var(--main-content-color);
+  animation: loader 1.2s linear infinite;
+}
+
+.not-visible {
+  display: none;
+}
+
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media screen and (max-width: 1000px) {
