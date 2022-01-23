@@ -88,15 +88,30 @@ function renderFavorites(){
    for(const element of favoritesList.children){
       favoritesList.removeChild(element);
    }
+
    for(const content of favoriteQuotes){
       let element = document.createElement("li");
+
+      let quoteBody = document.createElement("div");
+
+      let unfav = document.createElement("button");
+      unfav.innerHTML = `<i class="fa fa-heart" aria-hidden="true" id="favorite-btn"></i>`;
+      quoteBody.appendChild(unfav);
+
       let text = document.createElement("p");
       text.textContent = content.text;
-      element.appendChild(text);
-      let author = document.createElement("p");
+      quoteBody.appendChild(text);
+
+      element.appendChild(quoteBody);
+
+      let author = document.createElement("i");
       author.textContent = content.author;
       element.appendChild(author);
       favoritesList.appendChild(element);
+
+      let linebr = document.createElement("hr");
+      element.appendChild(linebr);
+
    }
 }
 

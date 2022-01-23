@@ -67,6 +67,22 @@ body {
   justify-content: space-between;
 }
 
+.favorites-list {
+  list-style: none;
+  padding: 0;
+}
+
+.favorites-list div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.favorites-list p {
+  margin: 0 0 0.5rem 1rem;
+  flex-grow: 1;
+}
+
 button {
   cursor: pointer;
   font-size: 1.25rem;
@@ -87,6 +103,19 @@ button:hover {
 button:active {
   transform: translate(0, 0.2rem);
   box-shadow: 0 0.1rem rgba(142, 144, 158, 0.6);
+}
+
+.favorites-list button {
+  cursor: pointer;
+  font-size: 0.75rem;
+  height: 1.5rem;
+  border: none;
+  color: var(--main-bg-color);
+  background-color: var(--main-content-color);
+  outline: none;
+  padding: 0.25rem 1rem;
+  box-shadow: 0 0.3rem rgba(142, 144, 158, 0.6);
+  border-radius: 8px;
 }
 
 .twitter-button:hover {
