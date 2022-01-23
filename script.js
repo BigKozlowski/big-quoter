@@ -40,7 +40,6 @@ function addFavorite(){
    const favoriteQuote = {text: quoteBodyElement.textContent,
    author: quoteAuthorElement.textContent}
    favoriteQuotes.push(favoriteQuote);
-   console.log(favoriteQuotes[favoriteQuotes.length-1]);
 }
 
 function getSingleQuoteOfQuotes() {
@@ -82,12 +81,10 @@ function addFavorite(){
    favoriteQuotes.push({text: quoteBodyElement.textContent,
    author: quoteAuthorElement.textContent});
    renderFavorites();
-   console.log(favoriteQuotes);
 }
 
 function removeFavorite(event){
    const selectedQuote = event.target.parentElement.parentElement.dataset.quoteId;
-   console.log("click");
    favoriteQuotes.splice(selectedQuote, 1);
    renderFavorites();
 }
