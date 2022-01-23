@@ -1,5 +1,6 @@
 let quotes = [];
-const favoriteQuotes = [];
+let favoriteQuotes = [];
+
 
 const quoteContainer = document.getElementById("quote-container");
 const quoteBodyElement = document.getElementById("quote");
@@ -13,8 +14,15 @@ const addFavoriteButton = document.getElementById("new-favorite-btn");
 const newQuoteButton = document.getElementById("new-quote");
 const twitterButton = document.getElementById("twitter");
 
-
 const loaderElement = document.getElementById("loader");
+
+function loadQuotes(){
+   favoriteQuotes = JSON.parse(localStorage.getItem("quotes"));
+}
+
+function storeQuotes(){
+   localStorage.setItem("quotes", JSON.stringify(favoriteQuotes));
+}
 
 function showLoadSpinner(){
    loaderElement.classList.remove("not-visible")
@@ -36,11 +44,6 @@ function showQuotes(){
    favoritesContainer.classList.add("not-visible");
 }
 
-function addFavorite(){
-   const favoriteQuote = {text: quoteBodyElement.textContent,
-   author: quoteAuthorElement.textContent}
-   favoriteQuotes.push(favoriteQuote);
-}
 
 function getSingleQuoteOfQuotes() {
    showLoadSpinner();
@@ -78,21 +81,27 @@ function tweetCurrentQuote(){
 }
 
 function addFavorite(){
-   favoriteQuotes.push({text: quoteBodyElement.textContent,
-   author: quoteAuthorElement.textContent});
-   renderFavorites();
+   console.log(favoriteQuotes)
+   const favoriteQuote = {text: quoteBodyElement.textContent,
+   author: quoteAuthorElement.textContent}
+   favoriteQuotes.push(favoriteQuote);
+   storeQuotes();
+   renderFavorites()
 }
 
 function removeFavorite(event){
    const selectedQuote = event.target.parentElement.parentElement.dataset.quoteId;
    favoriteQuotes.splice(selectedQuote, 1);
    renderFavorites();
+   storeQuotes()
 }
 
 function renderFavorites(){
    favoritesList.innerHTML = "";
 
    for(let i = 0; i< favoriteQuotes.length; i++){
+      console.log(favoriteQuotes[i]);
+
       let element = document.createElement("li");
 
       element.dataset.quoteId = i;
@@ -131,3 +140,5 @@ addFavoriteButton.addEventListener("click", addFavorite);
 homeButton.addEventListener("click", showQuotes);
 
 getQuote();
+loadQuotes();
+renderFavorites()
