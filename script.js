@@ -17,7 +17,8 @@ const twitterButton = document.getElementById("twitter");
 const loaderElement = document.getElementById("loader");
 
 function loadQuotes(){
-   favoriteQuotes = JSON.parse(localStorage.getItem("quotes"));
+   favoriteQuotes.push(JSON.parse(localStorage.getItem("quotes")));
+   favoriteQuotes.splice(0, 1);
 }
 
 function storeQuotes(){
@@ -87,14 +88,14 @@ function addFavorite(){
    author: quoteAuthorElement.textContent}
    favoriteQuotes.push(favoriteQuote);
    storeQuotes();
-   renderFavorites()
+   renderFavorites();
 }
 
 function removeFavorite(event){
    const selectedQuote = event.target.parentElement.parentElement.dataset.quoteId;
    favoriteQuotes.splice(selectedQuote, 1);
    renderFavorites();
-   storeQuotes()
+   storeQuotes();
 }
 
 function renderFavorites(){
