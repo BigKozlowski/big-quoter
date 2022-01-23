@@ -1,4 +1,4 @@
-let quotes = [];
+
 let favoriteQuotes = [];
 
 
@@ -16,9 +16,20 @@ const twitterButton = document.getElementById("twitter");
 
 const loaderElement = document.getElementById("loader");
 
+function isStorageEmpty(){
+   console.log(localStorage.getItem("quotes"));
+   if(localStorage.getItem("quotes")){
+      return false;
+   }
+   return true;
+}
+
 function loadQuotes(){
-   favoriteQuotes.push(JSON.parse(localStorage.getItem("quotes")));
-   favoriteQuotes.splice(0, 1);
+   if(!isStorageEmpty()){
+      for(element of JSON.parse(localStorage.getItem("quotes"))){
+         favoriteQuotes.push(element);
+      }
+   }
 }
 
 function storeQuotes(){
@@ -83,12 +94,11 @@ function tweetCurrentQuote(){
 }
 
 function addFavorite(){
-   console.log(favoriteQuotes)
    const favoriteQuote = {text: quoteBodyElement.textContent,
    author: quoteAuthorElement.textContent}
    favoriteQuotes.push(favoriteQuote);
-   storeQuotes();
    renderFavorites();
+   storeQuotes();
 }
 
 function removeFavorite(event){
@@ -102,8 +112,6 @@ function renderFavorites(){
    favoritesList.innerHTML = "";
 
    for(let i = 0; i< favoriteQuotes.length; i++){
-      console.log(favoriteQuotes[i]);
-
       let element = document.createElement("li");
 
       element.dataset.quoteId = i;
@@ -141,5 +149,5 @@ favoritesButton.addEventListener("click", showFavorites);
 addFavoriteButton.addEventListener("click", addFavorite);
 homeButton.addEventListener("click", showQuotes);
 
-getQuote();
 loadQuotes();
+getQuote();
