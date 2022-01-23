@@ -13,6 +13,7 @@ const addFavoriteButton = document.getElementById("new-favorite-btn");
 const newQuoteButton = document.getElementById("new-quote");
 const twitterButton = document.getElementById("twitter");
 
+
 const loaderElement = document.getElementById("loader");
 
 function showLoadSpinner(){
@@ -84,35 +85,46 @@ function addFavorite(){
    console.log(favoriteQuotes);
 }
 
-function renderFavorites(){
-   for(const element of favoritesList.children){
-      favoritesList.removeChild(element);
-   }
+function removeFavorite(event){
+   const selectedQuote = event.target.parentElement.parentElement.dataset.quoteId;
+   console.log("click");
+   favoriteQuotes.splice(selectedQuote, 1);
+   renderFavorites();
+}
 
-   for(const content of favoriteQuotes){
+function renderFavorites(){
+   favoritesList.innerHTML = "";
+
+   for(let i = 0; i< favoriteQuotes.length; i++){
       let element = document.createElement("li");
+
+      element.dataset.quoteId = i;
 
       let quoteBody = document.createElement("div");
 
       let unfav = document.createElement("button");
+      unfav.classList.add("delete-favorite")
       unfav.innerHTML = `<i class="fa fa-heart" aria-hidden="true" id="favorite-btn"></i>`;
       quoteBody.appendChild(unfav);
 
       let text = document.createElement("p");
-      text.textContent = content.text;
+      text.textContent = favoriteQuotes[i].text;
       quoteBody.appendChild(text);
 
       element.appendChild(quoteBody);
 
       let author = document.createElement("i");
-      author.textContent = content.author;
+      author.textContent = favoriteQuotes[i].author;
       element.appendChild(author);
       favoritesList.appendChild(element);
 
       let linebr = document.createElement("hr");
       element.appendChild(linebr);
 
+      element.addEventListener("click", removeFavorite);
+
    }
+
 }
 
 newQuoteButton.addEventListener("click", getQuote);
