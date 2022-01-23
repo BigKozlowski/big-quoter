@@ -17,7 +17,6 @@ const twitterButton = document.getElementById("twitter");
 const loaderElement = document.getElementById("loader");
 
 function isStorageEmpty(){
-   console.log(localStorage.getItem("quotes"));
    if(localStorage.getItem("quotes")){
       return false;
    }
