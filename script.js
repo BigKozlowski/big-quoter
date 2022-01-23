@@ -37,6 +37,7 @@ function showQuoteContainer(){
 function showFavorites(){
    quoteContainer.classList.add("not-visible");
    favoritesContainer.classList.remove("not-visible");
+   renderFavorites();
 }
 
 function showQuotes(){
@@ -141,4 +142,3 @@ homeButton.addEventListener("click", showQuotes);
 
 getQuote();
 loadQuotes();
-renderFavorites()
