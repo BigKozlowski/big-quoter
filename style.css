@@ -26,7 +26,7 @@ body {
   width: auto;
   max-width: 50%;
   padding: 1.25rem 2rem;
-  margin: 10rem auto;
+  margin: 10rem auto 2rem auto;
   border-radius: 12px;
   background-color: rgba(242, 242, 242, 0.4);
   box-shadow: 0 8px 8px 8px rgba(43,46,74,0.2);
@@ -154,7 +154,7 @@ button:active {
 
 @media screen and (max-width: 1000px) {
   .quote-container, .favorites-container {
-    margin: 7rem 1rem;
+    margin: 7rem 1rem 1rem 1rem;
     margin-top: max(20% auto);
     max-width: 80%;
   }
@@ -190,5 +190,14 @@ button:active {
     padding: 0.25rem 1rem;
     margin: 0.25rem;
     font-size: 1rem;
+  }
+}
+
+@media screen and (max-height: 400px) {
+  .quote-text {
+    font-size: 1.5rem;
+  }
+  .quote-author{
+    font-size: 1.5rem;
   }
 }
