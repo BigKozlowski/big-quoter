@@ -154,7 +154,7 @@ button:active {
 
 @media screen and (max-width: 1000px) {
   .quote-container, .favorites-container {
-    margin: 6rem 1rem;
+    margin: 7rem 1rem;
     margin-top: max(20% auto);
     max-width: 80%;
   }
