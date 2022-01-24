@@ -26,6 +26,7 @@ body {
   width: auto;
   max-width: 50%;
   padding: 1.25rem 2rem;
+  margin: 10rem auto;
   border-radius: 12px;
   background-color: rgba(242, 242, 242, 0.4);
   box-shadow: 0 8px 8px 8px rgba(43,46,74,0.2);
@@ -106,16 +107,13 @@ button:active {
 }
 
 .favorites-list button {
-  cursor: pointer;
   font-size: 0.75rem;
   height: 1.5rem;
-  border: none;
-  color: var(--main-bg-color);
-  background-color: var(--main-content-color);
-  outline: none;
   padding: 0.25rem 1rem;
-  box-shadow: 0 0.3rem rgba(142, 144, 158, 0.6);
-  border-radius: 8px;
+}
+
+.nav-container button {
+  margin: 0.5rem;
 }
 
 .twitter-button:hover {
@@ -153,15 +151,19 @@ button:active {
   }
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1000px) {
   .quote-container, .favorites-container {
-    margin: auto 1rem;
+    margin: 6rem 1rem;
     margin-top: max(20% auto);
     max-width: 80%;
   }
 
   .quote-text {
     font-size: 2rem;
+  }
+
+  .nav-container {
+    flex-direction: row;
   }
 
   button {
